@@ -81,6 +81,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h6">
           {currentId ? 'Editing a Memory' : 'Creating a Memory'}
         </Typography>
+
         <TextField
           name="creator"
           variant="outlined"
@@ -91,6 +92,7 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, creator: e.target.value })
           }
         />
+
         <TextField
           name="title"
           variant="outlined"
@@ -101,6 +103,7 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, title: e.target.value })
           }
         />
+
         <TextField
           name="message"
           variant="outlined"
@@ -113,6 +116,7 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, message: e.target.value })
           }
         />
+
         <TextField
           name="tags"
           variant="outlined"
@@ -123,6 +127,19 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, tags: e.target.value })
           }
         />
+
+        {/* Live Tag Preview */}
+        {postData.tags && (
+          <Typography
+            variant="body2"
+            style={{ marginTop: '5px', color: '#555' }}
+          >
+            {postData.tags
+              .split(',')
+              .map((tag) => `#${tag.trim()}`)
+              .join(' ')}
+          </Typography>
+        )}
 
         <div className={classes.fileInput}>
           <input

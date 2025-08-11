@@ -4,10 +4,20 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from 'moment';
+import { useDispatch  } from 'react-redux';
+import { deletePost , likePost } from '../../../actions/posts';
 
 const Post = ({ post , setCurrentId }) => {
+  const dispatch = useDispatch();
   return (
-    <Card style={{ maxWidth: 400, borderRadius: 15, position: 'relative' }}>
+    <Card style={{ 
+  maxWidth: 400, 
+  borderRadius: 15, 
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1, // Ensures all cards in a row stretch equally
+}}>
       {/* Image container with relative position */}
       <div style={{ position: 'relative' }}>
         <img
@@ -47,20 +57,27 @@ const Post = ({ post , setCurrentId }) => {
         </Typography>
       </div>
 
-      {/* Message content */}
-      <CardContent>
-        <Typography variant="h5" gutterBottom>
+      {/* Title + Message */}
+      <CardContent style={{flexGrow:1}}>
+        {/* Title */}
+        <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold' }}>
+          {post.title}
+        </Typography>
+
+        {/* Message */}
+        <Typography variant="body1">
           {post.message}
         </Typography>
       </CardContent>
 
       {/* Like and Delete buttons */}
       <CardActions style={{ padding: '0 16px 8px 16px', justifyContent: 'space-between' }}>
-        <IconButton size="small" color="primary" onClick={() => {}}>
+        <IconButton size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
           <ThumbUpAltIcon fontSize="small" />
-          Like {post.likeCount}
+          Like &nbsp;
+          {post.likeCount}
         </IconButton>
-        <IconButton size="small" color="primary" onClick={() => {}}>
+        <IconButton size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
           <DeleteIcon fontSize="small" />
           Delete
         </IconButton>
