@@ -15,21 +15,21 @@ export default makeStyles({
     height: '100%',
     position: 'relative',
     maxWidth: 400,
-    overflow: 'hidden', // Ensures child elements respect border radius
+    overflow: 'visible', 
   },
   overlay: {
     position: 'absolute',
     top: '20px',
     left: '20px',
     color: 'white',
-    zIndex: 10, // For creator name and timestamp
+    zIndex: 10, 
   },
 overlay2: {
   position: 'absolute',
   top: 8,
   right: 8,
   zIndex: 10,
-  backgroundColor: 'rgba(0,0,0,0.3)',  // optional, to match tutor style
+  backgroundColor: 'rgba(0,0,0,0.3)',  
   borderRadius: '50%',
   padding: 2,
 },
@@ -40,17 +40,16 @@ overlay2: {
   },
   title: {
     padding: '0 16px',
-    wordBreak: 'break-word', // Prevents text overflow
+    wordBreak: 'break-word', 
   },
   cardActions: {
     padding: '0 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
     '& .MuiButton-root': {
-      margin: '0 4px', // Adds spacing between buttons
+      margin: '0 4px', 
     }
   },
-  // Additional utility classes
   border: {
     border: 'solid',
   },

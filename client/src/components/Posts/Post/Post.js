@@ -16,7 +16,7 @@ const Post = ({ post , setCurrentId }) => {
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  flex: 1, // Ensures all cards in a row stretch equally
+  flex: 1, 
 }}>
       {/* Image container with relative position */}
       <div style={{ position: 'relative' }}>
@@ -65,7 +65,7 @@ const Post = ({ post , setCurrentId }) => {
         </Typography>
 
         {/* Message */}
-        <Typography variant="body1">
+        <Typography variant="body1" style={{ wordBreak: 'break-word', whiteSpace: 'normal' }}>
           {post.message}
         </Typography>
       </CardContent>
